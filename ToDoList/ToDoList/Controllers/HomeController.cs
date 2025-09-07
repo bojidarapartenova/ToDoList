@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
 
@@ -7,15 +8,18 @@ namespace ToDoList.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IToDoService toDoService;
+    public HomeController(ILogger<HomeController> logger, IToDoService toDoService)
     {
         _logger = logger;
+        this.toDoService = toDoService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        IEnumerable<ToDoItem> items = await toDoService.GetUserItemsAsync("global");
+
+        return View(items);
     }
 
     public IActionResult Privacy()
