@@ -1,0 +1,10 @@
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.csproj.AssemblyReference.cache
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/rpswa.dswa.cache.json
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.AssemblyInfoInputs.cache
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.AssemblyInfo.cs
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.csproj.CoreCompileInputs.cache
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.MvcApplicationPartsAssemblyInfo.cache
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.RazorAssemblyInfo.cache
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.RazorAssemblyInfo.cs
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.sourcelink.json
