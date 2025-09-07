@@ -1,26 +1,61 @@
-﻿@model IEnumerable<ToDoItem>
+﻿@model IEnumerable<ToDoList.Models.ToDoItem>
 
-<h2>Your To-Do List</h2>
-
-@if (!Model.Any())
-{
-    <p>No tasks</p>
+@{
+    ViewData["Title"] = "My To Do List:";
 }
-else
-{
-    <ul>
-        @foreach (var task in Model)
+
+<h2 style="text-align: center;">@ViewData["Title"]</h2>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
         {
-            <li>
-                @if (task.IsCompleted)
-                {
-                    <s>@task.Description</s>
-                }
-                else
-                {
-                    @task.Description
-                }
-            </li>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Description</h5>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between mb-2">
+                            <div class="btn-group">
+                                <a asp-action="Pin" asp-route-id="@item.Id" class="btn btn-sm custom-pin">Pin</a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm custom-edit">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm custom-delete">Delete</a>
+                            </div>
+                        </div>
+                        <p class="text-muted small mb-0">Created at: @item.CreatedAt.ToString("g")</p>
+                    </div>
+                </div>
+            </div>
         }
-    </ul>
-}
+    </div>
+</div>
+
+<style>
+    .card {
+        min-height: 180px;
+    }
+
+    .btn-group .btn {
+        margin-right: 2px;
+    }
+
+    .custom-pin {
+        background-color: #e2b4c1;
+        color: black;
+    }
+    
+    .custom-edit {
+        background-color: #d38c9d;
+        color: black;
+    }
+
+    .custom-delete {
+        background-color: #a55166;
+        color: black;
+    }
+
+    .custom-pin:hover, .custom-edit:hover, .custom-delete:hover {
+        background-color: #f7dae7;
+    }
+</style>
