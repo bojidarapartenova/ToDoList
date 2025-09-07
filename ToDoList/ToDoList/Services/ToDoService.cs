@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data;
 using ToDoList.Models;
@@ -10,6 +11,7 @@ public class ToDoService : IToDoService
     {
         this.dbContext = dbContext;
     }
+
     public async Task<IEnumerable<ToDoItem>> GetUserItemsAsync(string userId)
     {
         IEnumerable<ToDoItem> items = await dbContext
@@ -17,5 +19,24 @@ public class ToDoService : IToDoService
         .ToListAsync();
 
         return items;
+    }
+
+    public async Task<bool> AddTaskAsync(string userId, AddItemInputModel inputModel)
+    {
+        bool result = false;
+
+        if (userId != null)
+        {
+            ToDoItem item = new ToDoItem()
+            {
+                Description = inputModel.Description
+            };
+
+            await dbContext.ToDoItems.AddAsync(item);
+            await dbContext.SaveChangesAsync();
+
+            result = true;
+        }
+        return result;
     }
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ToDoList.Models;
 
 namespace ToDoList.Controllers;
@@ -22,9 +23,34 @@ public class HomeController : Controller
         return View(items);
     }
 
-    public IActionResult Privacy()
+    [HttpGet]
+    public async Task<IActionResult> Add()
     {
         return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Add(AddItemInputModel inputModel)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(inputModel);
+            }
+            bool result = await toDoService.AddTaskAsync("global", inputModel);
+
+            if (!result)
+            {
+                return View(inputModel);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
