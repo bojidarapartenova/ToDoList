@@ -56,10 +56,10 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
         {
-            try
-            {
             DeleteItemViewModel? itemToDelete = await
             toDoService.GetItemToDeleteAsync(id);
 
@@ -67,44 +67,41 @@ public class HomeController : Controller
             {
                 return RedirectToAction(nameof(Index));
             }
-                return View(itemToDelete);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return RedirectToAction(nameof(Index));
-            }
+            return View(itemToDelete);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(DeleteItemViewModel viewModel)
+        catch (Exception e)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-{
-    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-    {
-        Console.WriteLine(error.ErrorMessage);
-    }
-    return View(viewModel);
-}
-
-                bool result = await toDoService.SoftDeleteItem(viewModel);
-
-                if (result == false)
-                {
-                    System.Console.WriteLine("result falseeeeeee");
-                    return View(viewModel);
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return RedirectToAction(nameof(Index));
-            }
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(DeleteItemViewModel viewModel)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(viewModel);
+            }
+
+            bool result = await toDoService.SoftDeleteItem(viewModel);
+
+            if (result == false)
+            {
+                System.Console.WriteLine("result falseeeeeee");
+                return View(viewModel);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
