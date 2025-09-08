@@ -19,7 +19,9 @@ public class ToDoService : IToDoService
     {
         IEnumerable<ToDoItem> items = await dbContext
         .ToDoItems
-        .Where(i=>i.IsDeleted==false)
+        .Where(i => i.IsDeleted == false)
+        .OrderByDescending(i => i.IsPinned)   
+        .ThenByDescending(i => i.CreatedAt)
         .ToListAsync();
 
         return items;
@@ -115,6 +117,25 @@ public class ToDoService : IToDoService
         if (itemToEdit != null)
         {
             itemToEdit.Description = inputModel.Description;
+
+            await dbContext.SaveChangesAsync();
+            result = true;
+        }
+
+        return result;
+    }
+
+    public async Task<bool> PinTaskAsync(int id)
+    {
+        bool result = false;
+
+        ToDoItem? itemToPin = await dbContext
+        .ToDoItems
+        .SingleOrDefaultAsync(i => i.Id == id);
+
+        if (itemToPin != null)
+        {
+            itemToPin.IsPinned = true;
 
             await dbContext.SaveChangesAsync();
             result = true;

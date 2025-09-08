@@ -11,5 +11,6 @@ namespace ToDoList.Models
         public string Description { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; } = false;
+        public bool IsPinned { get; set; } = false;
     }
 }

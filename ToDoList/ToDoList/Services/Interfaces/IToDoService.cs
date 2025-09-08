@@ -9,4 +9,5 @@ public interface IToDoService
     Task<bool> SoftDeleteItem(DeleteItemViewModel viewModel);
     Task<EditItemInputModel?> GetItemToEditAsync(int id);
     Task<bool> EditItemAsync(EditItemInputModel inputModel);
+    Task<bool> PinTaskAsync(int id);
 }

@@ -148,6 +148,22 @@ public class HomeController : Controller
         }
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Pin(int id)
+    {
+        try
+        {
+            bool result = await toDoService.PinTaskAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
