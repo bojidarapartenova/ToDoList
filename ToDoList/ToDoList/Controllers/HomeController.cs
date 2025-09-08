@@ -83,7 +83,6 @@ public class HomeController : Controller
         {
             if (!ModelState.IsValid)
             {
-
                 return View(viewModel);
             }
 
@@ -91,8 +90,54 @@ public class HomeController : Controller
 
             if (result == false)
             {
-                System.Console.WriteLine("result falseeeeeee");
                 return View(viewModel);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        try
+        {
+            EditItemInputModel? itemToEdit = await
+            toDoService.GetItemToEditAsync(id);
+
+            if (itemToEdit == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(itemToEdit);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RedirectToAction(nameof(Index));
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(EditItemInputModel inputModel)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(inputModel);
+            }
+
+            bool result = await toDoService.EditItemAsync(inputModel);
+
+            if (result == false)
+            {
+                return View(inputModel);
             }
             return RedirectToAction(nameof(Index));
         }

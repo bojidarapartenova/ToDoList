@@ -7,4 +7,6 @@ public interface IToDoService
     Task<bool> AddTaskAsync(string userId, AddItemInputModel inputModel);
     Task<DeleteItemViewModel?> GetItemToDeleteAsync(int id);
     Task<bool> SoftDeleteItem(DeleteItemViewModel viewModel);
+    Task<EditItemInputModel?> GetItemToEditAsync(int id);
+    Task<bool> EditItemAsync(EditItemInputModel inputModel);
 }

@@ -83,4 +83,43 @@ public class ToDoService : IToDoService
 
         return result;
     }
+
+    public async Task<EditItemInputModel?> GetItemToEditAsync(int id)
+    {
+        EditItemInputModel? itemToEdit = null;
+
+        ToDoItem? item = await dbContext
+        .ToDoItems
+        .AsNoTracking()
+        .SingleOrDefaultAsync(i => i.Id == id);
+
+        if (item != null)
+        {
+            itemToEdit = new EditItemInputModel()
+            {
+                Description = item.Description
+            };
+        }
+
+        return itemToEdit;
+    }
+
+    public async Task<bool> EditItemAsync(EditItemInputModel inputModel)
+    {
+        bool result = false;
+
+        ToDoItem? itemToEdit = await dbContext
+        .ToDoItems
+        .FindAsync(inputModel.Id);
+            
+        if (itemToEdit != null)
+        {
+            itemToEdit.Description = inputModel.Description;
+
+            await dbContext.SaveChangesAsync();
+            result = true;
+        }
+
+        return result;
+    }
 }
