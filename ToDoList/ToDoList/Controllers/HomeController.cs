@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ToDoList.Data;
 using ToDoList.Models;
+using ToDoList.ViewModels;
 
 namespace ToDoList.Controllers;
 
@@ -53,6 +54,57 @@ public class HomeController : Controller
             return RedirectToAction(nameof(Index));
         }
     }
+
+    [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+            DeleteItemViewModel? itemToDelete = await
+            toDoService.GetItemToDeleteAsync(id);
+
+            if (itemToDelete == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+                return View(itemToDelete);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteItemViewModel viewModel)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+{
+    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+    {
+        Console.WriteLine(error.ErrorMessage);
+    }
+    return View(viewModel);
+}
+
+                bool result = await toDoService.SoftDeleteItem(viewModel);
+
+                if (result == false)
+                {
+                    System.Console.WriteLine("result falseeeeeee");
+                    return View(viewModel);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return RedirectToAction(nameof(Index));
+            }
+        }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
