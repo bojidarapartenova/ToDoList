@@ -18,9 +18,14 @@
                     <div class="card-footer">
                         <div class="d-flex justify-content-between mb-2">
                             <div class="btn-group">
-                                <a asp-action="Pin" asp-route-id="@item.Id" class="btn btn-sm custom-pin">
-                                @(item.IsPinned ? "Unpin" : "Pin")</a>
-
+                                <form asp-action="Pin" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                   <button type="submit" class="btn btn-sm custom-pin">
+                                       @(item.IsPinned ? "Unpin" : "Pin")
+                                   </button>
+                                   @Html.AntiForgeryToken()
+                                </form>
+                                
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm custom-edit">Edit</a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm custom-delete">Delete</a>
                             </div>

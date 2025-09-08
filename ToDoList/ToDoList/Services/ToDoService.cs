@@ -135,7 +135,7 @@ public class ToDoService : IToDoService
 
         if (itemToPin != null)
         {
-            itemToPin.IsPinned = true;
+            itemToPin.IsPinned = !itemToPin.IsPinned;
 
             await dbContext.SaveChangesAsync();
             result = true;

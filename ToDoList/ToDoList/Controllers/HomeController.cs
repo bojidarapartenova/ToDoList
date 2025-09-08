@@ -148,12 +148,12 @@ public class HomeController : Controller
         }
     }
 
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> Pin(int id)
     {
         try
         {
-            bool result = await toDoService.PinTaskAsync(id);
+            bool result = await toDoService.PinTaskAsync(id);   
 
             return RedirectToAction(nameof(Index));
         }
