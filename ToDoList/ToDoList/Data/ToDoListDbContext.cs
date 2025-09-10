@@ -5,7 +5,7 @@ using ToDoList.Models;
 
 namespace ToDoList.Data
 {
-    public class ToDoListDbContext : IdentityDbContext<IdentityUser>
+    public class ToDoListDbContext : DbContext
     {
         public ToDoListDbContext(DbContextOptions<ToDoListDbContext> options)
         : base(options)
@@ -14,5 +14,12 @@ namespace ToDoList.Data
         }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ToDoItem>().HasKey(i => i.Id);
+        }
     }
 }
