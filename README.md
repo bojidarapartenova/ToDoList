@@ -2,15 +2,15 @@
 A simple and elegant ToDo List web application built with ASP.NET Core MVC. This app helps users manage their daily tasks with features like adding, editing, deleting, pinning, and marking tasks as completed.
 
 # ✨Features
-Add Tasks – Quickly add new tasks with a description.
+- Add Tasks – Quickly add new tasks with a description.
 
-Edit Tasks – Update task descriptions easily.
+- Edit Tasks – Update task descriptions easily.
 
-Delete Tasks – Remove tasks you no longer need.
+- Delete Tasks – Remove tasks you no longer need.
 
-Pin/Unpin Tasks – Keep important tasks at the top of the list.
+- Pin/Unpin Tasks – Keep important tasks at the top of the list.
 
-Mark as Completed – Check off tasks, which automatically strikes through the description and highlights completion.
+- Mark as Completed – Check off tasks, which automatically strikes through the description and highlights completion.
 
 # 📸Screenshots
 <img width="1470" height="865" alt="Screenshot 2025-09-11 at 23 27 34" src="https://github.com/user-attachments/assets/1dee1719-bbcc-427a-9a44-d3eee087b126" />
