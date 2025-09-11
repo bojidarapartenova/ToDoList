@@ -1,23 +1,60 @@
-﻿@model AddItemInputModel
+﻿@using Microsoft.AspNetCore.Mvc.Rendering;
+@model AddItemInputModel
 
 @{
     ViewData["Title"] = "Add New Task";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 style="text-align:center; margin-bottom:30px;">@ViewData["Title"]</h2>
 
-<form asp-action="Add" method="post">
-    <div class="form-group mb-3">
-        <label asp-for="Description" class="form-label"></label>
-        <input asp-for="Description" class="form-control" placeholder="Enter your task" />
-        <span asp-validation-for="Description" class="text-danger"></span>
+<div class="container d-flex justify-content-center">
+    <div class="card p-4" style="max-width:500px; width:100%;">
+        <form asp-action="Add" method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" placeholder="Enter your task" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-sm custom-pin">Add Task</button>
+        </form>
     </div>
-
-    <button type="submit" class="btn btn-primary">Add Task</button>
-</form>
+</div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<style>
+    body {
+        background: linear-gradient(135deg, #d8e1e8, #aab8c6);
+    }
+
+    .card {
+        background-color: #ffffffcc;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-sm.custom-pin {
+        background-color: #4a5c6a;
+        color: #ccd0cf;
+        transition: all 0.3s ease;
+    }
+
+    .btn-sm.custom-pin:hover {
+        background-color: #5b6f82;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+</style>

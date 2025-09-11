@@ -220,8 +220,6 @@
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/l7vayr5wcl-muycvpuwrr.gz
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/xx0yilzgjk-87fc7y1x7t.gz
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/t47zxqca8j-mlv21k5csn.gz
-/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/czb8h1ppxc-s5abrmjq84.gz
-/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/a11mfzpa8n-s5abrmjq84.gz
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/staticwebassets.build.json
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/staticwebassets.development.json
@@ -232,3 +230,5 @@
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.pdb
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/ToDoList.genruntimeconfig.cache
 /Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/ref/ToDoList.dll
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/czb8h1ppxc-67yaj7hibi.gz
+/Users/bozidarapartenova/Documents/GitHub/ToDoList/ToDoList/ToDoList/obj/Debug/net9.0/compressed/a11mfzpa8n-67yaj7hibi.gz
